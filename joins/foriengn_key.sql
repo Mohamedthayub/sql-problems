@@ -1,21 +1,38 @@
-use PRACTICE;
+USE PRACTICE;
 
-DESCRIBE BRANCH;
 
-CREATE  TABLE BRANCH(
-    BRANCH_ID INT  PRIMARY KEY AUTO_INCREMENT,
-    BRANCH_NAME VARCHAR(30),
-    ADDRESS VARCHAR(30)
-);
-CREATE TABLE EMPLOYEE (
-    EMP_ID INT PRIMARY KEY AUTO_INCREMENT,
-    EMP_NAME VARCHAR(30),
-    JOB_DESCRIPTION VARCHAR(30),
-    SALARY INT,
-    BRANCH_ID INT,
-    CONSTRAINT FK_BRANCH_ID FOREIGN KEY (BRANCH_ID) REFERENCES BRANCH (BRANCH_ID)
-);
 
-DROP TABLE `BRANCH`;
-ALTER  TABLE `EMPLOYEE` DROP FOREIGN KEY FK_BRANCH_ID;-- HERE WE CUT THE LINK BETWEEN TWO TABLE
-DROP TABLE `EMPLOYEE`;
+SELECT e.employee_id,e.name,d.department_name FROM employees e INNER JOIN  departments d ON e.department_id = d.department_id;
+
+
+select e.employee_id,e.name,d.department_name from employees e inner join  departments d on e.department_id = d.department_id;
+
+-- INNER JOIN — Only matching rows
+-- An INNER JOIN returns rows where the join condition matches in both tables.
+
+
+
+/*
+Remember: LEFT JOIN keeps all rows from the left table, even when there is no match.
+The left and right sides depend on the order of tables in your query.
+*/
+select e.employee_id,e.name,d.department_name from employees e right join departments d  on e.department_id = d.department_id;
+select e.employee_id,e.name,e.department_id from employees e left join departments d on e.department_id = d.department_id;
+
+
+select e.employee_id,e.name,e.department_id from employees e left join departments d on e.department_id = d.department_id;
+
+
+select e.employee_id,e.name,e.department_id from employees e inner join departments d on e.department_id = d.department_id
+order by  name;
+-- inner join is use to what row are matching 
+
+
+select e.employee_id,e.name,e.department_id from employees e left join departments d on e.department_id = d.department_id
+order by  name;
+-- left join 
+
+
+select e.employee_id,e.name,e.department_id from employees e right join departments d on e.department_id = d.department_id
+order by  name;
+-- right join 
